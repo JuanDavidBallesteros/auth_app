@@ -1,0 +1,58 @@
+version: '3.7'
+
+services:
+  front:
+    hostname: front
+    container_name: front
+    build:
+      context: ../auth_app_front/
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - auth
+    volumes:
+      - ../auth_app_front/src:/app/src
+    environment:
+      API_URL: http://auth:2000
+
+  auth:
+    container_name: auth
+    hostname: auth
+    build:
+      context: ../auth_app_back/
+      dockerfile: Dockerfile
+    environment:
+      MONGODB_URI: mongodb://root:example@mongo:27017/core?directConnection=true&authSource=admin
+      SERVICE_PORT: 2000
+    ports:
+      - 2000:2000
+    depends_on:
+      - mongo
+    volumes:
+      - ../auth_app_back:/app
+
+  mongo:
+    container_name: mongo
+    hostname: mongo
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+    depends_on:
+      - mongo
