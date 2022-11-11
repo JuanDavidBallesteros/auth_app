@@ -24,13 +24,19 @@ const user_service = {
     }
 
     if (!_document) {
+      const size = (await User.find()).length
+      
       _document = new User();
       _document._id = _id;
       user["password"] = await hash_service.hash(
         user.password,
         user.username.length
       );
+      if(size == 0){
+        user["isAdmin"] = true;
+      }
       for (const property in user) {
+        //console.log(user[property])
         _document[property] = user[property];
       }
 

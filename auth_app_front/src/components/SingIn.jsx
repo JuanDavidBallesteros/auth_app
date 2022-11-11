@@ -32,6 +32,7 @@ export default function SignIn({ handleSign, handleForgot }) {
     }, (res) => {
       if (res) {
         if(res.data){
+          //console.log(res.data);
           handleSign(res.data)
         } else {
           alert("Invalid credentials");
