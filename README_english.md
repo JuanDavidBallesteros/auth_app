@@ -48,6 +48,6 @@ This challenge consisted in identifying the URLs that are within the docker-comp
 
 
 ## Conclusions
-We can appreciate the CIA triad of cybersecurity throughout the project. Confidentiality corresponds with the hashing of the passwords, while integrity is an inherent characteristic that the database implements, and is considered while saving and retrieving data from it. Finally, availabity is showm through the list that can be displayed at any moment, and through the guarantee that the backend services can always be accessed and the data can always be queried from the database.
+We can appreciate the CIA triad of cybersecurity throughout the project. Confidentiality corresponds with the hashing of the passwords, while integrity is an inherent characteristic that the database implements, and is considered while saving and retrieving data from it. Finally, availabity is showm through the list of users that can be displayed at any moment, and through the guarantee that the backend services can always be accessed and the data can always be queried from the database.
 
 
