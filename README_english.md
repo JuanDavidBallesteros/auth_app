@@ -40,7 +40,7 @@ Later it was decided to separate the code more and thus the tasks could be more 
 
 
 #### Updates
-Another challenge was to integrate the update cases, seeking to reduce the amount of code that was written. For this, we send a new parameter within the update function, which allows identifying if only the password is being updated and doing the hash function ove. the new password.
+Another challenge was to integrate the update cases, seeking to reduce the amount of code that was written. For this, we send a new parameter within the update function, which allows identifying if only the password is being updated and doing the hash function over the new password.
 
 
 #### URLs
