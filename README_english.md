@@ -10,7 +10,7 @@ Run the command
 ```
 docker-compose up
 ```
-...and the service will be running on port 3000.
+...in the folder *auth_app_db* and the service will be running on port 3000.
 
 ## Stages of construction
 1. Define the system and its sections. It was determined that it would consist of a frontend, a backend and a database.
