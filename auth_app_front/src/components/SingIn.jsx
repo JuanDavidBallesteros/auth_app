@@ -23,6 +23,15 @@ function Copyright(props) {
 }
 
 export default function SignIn({ handleSign, handleForgot }) {
+
+  const gateDate = () => {
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const yy = today.getFullYear();
+    return `${mm}/${dd}/${yy}`;
+}
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -32,7 +41,13 @@ export default function SignIn({ handleSign, handleForgot }) {
     }, (res) => {
       if (res) {
         if(res.data){
-          //console.log(res.data);
+          console.log(res.data, "Authenticated successfully");
+          consumer.sendUser({
+            ...res.data,
+            lastIngress: gateDate()
+        }, (res) => {
+          console.log(res.data);
+        })
           handleSign(res.data)
         } else {
           alert("Invalid credentials");
