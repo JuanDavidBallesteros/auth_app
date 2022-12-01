@@ -6,7 +6,7 @@ por Juan David Ballesteros y Alejandra Diaz
 * Docker compose
 
 ## ¿Cómo ejecutar?
-Ejecute el comando
+Ubicándose en la carpeta *auth_app_db* ejecute el comando
 ```
 docker-compose up
 ```
